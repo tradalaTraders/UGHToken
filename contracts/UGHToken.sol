@@ -13,7 +13,7 @@ contract UGHToken is ERC20, ERC20Detailed, Ownable {
     address _manager;
     constructor (address _managerAddress) ERC20Detailed("UGH Token","UGH", DECIMALS) public{
         require(_managerAddress!=address(0));
-        _mint(msg.sen,INITIAL_SUPPLY);
+        _mint(_managerAddress,INITIAL_SUPPLY);
         _balances[_managerAddress] = INITIAL_SUPPLY; 
     }
      function () payable external { 

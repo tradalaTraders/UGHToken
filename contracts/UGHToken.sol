@@ -14,13 +14,13 @@ contract UGHToken is ERC20,ERC20Detailed, Ownable {
     constructor (address _managerAddress) ERC20Detailed(_name,_symbol, 18) public{
         _mint(msg.sender, INITIAL_SUPPLY);
         _manager = _managerAddress;
-        transferToManager();
+        transferToManager(_managerAddress);
     }
     
     // function to transfer funds to manager account
-    function transferToManager() public {
-        require(_manager != address(0));
-        transfer(_manager,INITIAL_SUPPLY);
+    function transferToManager(address _address) public {
+        // require(_address != 0x0);
+        _transfer(msg.sender,_address,INITIAL_SUPPLY);
     }
      function () payable external { }
     

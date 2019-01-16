@@ -8,7 +8,7 @@ contract('MyToken', accounts => {
     var tokenInstance;
 
     beforeEach(async function () {
-        this.token = await MyToken.new();
+        this.token = await MyToken.new('0x51815bEfde28cF1248A5d7399B8130169d22596d');
     })
     it('initializes the contract with the correct values', function () {
         return MyToken.deployed().then(function (instance) {
@@ -25,6 +25,7 @@ contract('MyToken', accounts => {
             return tokenInstance.totalSupply();
         }).then(function (totalSupply) {
             assert.equal(totalSupply.toNumber(), _totalSupply, 'it has correct decimals');
+            // return tokenInstance.transfer(fromAccount, 100, { from: accounts[0] });
         });
     })
 })
